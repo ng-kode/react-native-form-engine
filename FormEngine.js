@@ -22,6 +22,7 @@ class FormEngine extends React.Component {
     return (
       <>
         {fields.map(field => {
+          this.throwInvalidField(field);
           const {template, path, options} = field;
           const Component = templates[template];
           const fieldValue = lodash.get(currentState, path);
@@ -42,6 +43,18 @@ class FormEngine extends React.Component {
       </>
     );
   }
+
+  throwInvalidField = field => {
+    const {template, path, options} = field;
+
+    if (!path) {
+      throw Error(`path is missing for field ${JSON.stringify(field)}`);
+    }
+
+    if (!template) {
+      throw Error(`template is missing for field ${JSON.stringify(field)}`);
+    }
+  };
 
   handleChange = (path, value) => {
     const {value: currentState, onChange} = this.props;
