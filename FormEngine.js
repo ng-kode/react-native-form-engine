@@ -26,7 +26,6 @@ class FormEngine extends React.Component {
           const Component = templates[template];
           const fieldValue = lodash.get(currentState, path);
           const errorText = (errors[path] || [])[0];
-          const hasError = errorText !== undefined;
 
           return (
             <Component
@@ -35,9 +34,8 @@ class FormEngine extends React.Component {
               onChange={value => this.handleChange(path, value)}
               onBlur={() => this.handleBlur(path)}
               errorText={errorText}
-              hasError={hasError}
               touched={touched[path]}
-              {...options}
+              options={options}
             />
           );
         })}
