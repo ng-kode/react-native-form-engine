@@ -1,6 +1,6 @@
 # Features
 
-- Easy to configure templates
+- Easy to configure templates (for both inputs and displays)
 - Full control of `value` and `onChange`
 - Handled `errors` and `touched` for you
 - Disable / Hide fields by conditions
