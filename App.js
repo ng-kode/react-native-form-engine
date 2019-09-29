@@ -1,72 +1,72 @@
-import React from "react";
-import { View, Button, StyleSheet, SafeAreaView, Text } from "react-native";
+import React from 'react';
+import {View, Button, StyleSheet, SafeAreaView, Text} from 'react-native';
 import FormEngine from './FormEngine';
 
 class App extends React.Component {
   state = {
-    value: {}
+    value: {},
   };
 
   render = () => {
-    const { value } = this.state;
+    const {value} = this.state;
 
-    return <SafeAreaView>
-      <View style={styles.container}>
-        <FormEngine
-          fields={[
-            {
-              template: 'TextField',
-              path: 'username',
-              options: {
-                label: 'Username'
-              }
-            },
-            {
-              template: 'TextField',
-              path: 'email',
-              options: {
-                label: 'Email'
-              }
-            },
-            {
-              template: 'TextField',
-              path: 'password',
-              options: {
-                label: 'Password',
-                secureTextEntry: true
-              }
-            },
-            {
-              template: 'TextField',
-              path: 'confirmPassword',
-              options: {
-                label: 'Confirm Password',
-                secureTextEntry: true
-              }
-            }
-          ]}
-          value={value}
-          onChange={this._onChange}
-        />
-        <Button title="Submit" onPress={this._onPress} />
+    return (
+      <SafeAreaView>
+        <View style={styles.container}>
+          <FormEngine
+            fields={[
+              {
+                template: 'TextField',
+                path: 'username',
+                options: {
+                  label: 'Username',
+                },
+              },
+              {
+                template: 'TextField',
+                path: 'email',
+                options: {
+                  label: 'Email',
+                },
+              },
+              {
+                template: 'TextField',
+                path: 'password',
+                options: {
+                  label: 'Password',
+                  secureTextEntry: true,
+                },
+              },
+              {
+                template: 'TextField',
+                path: 'confirmPassword',
+                options: {
+                  label: 'Confirm Password',
+                  secureTextEntry: true,
+                },
+              },
+            ]}
+            value={value}
+            onChange={this._onChange}
+          />
+          <Button title="Submit" onPress={this._onPress} />
 
-        <View style={styles.spacer} />
+          <View style={styles.spacer} />
 
-        <View style={styles.codeDisplay}>
-          <Text style={styles.title}>Form Value</Text>
-          <Text>{JSON.stringify(value, null, 2)}</Text>
+          <View style={styles.codeDisplay}>
+            <Text style={styles.title}>Form Value</Text>
+            <Text>{JSON.stringify(value, null, 2)}</Text>
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
-  }
+      </SafeAreaView>
+    );
+  };
 
   _onChange = value => {
-    this.setState({ value });
-  }
+    this.setState({value});
+  };
 
-  _onPress = () => {
-
-  }
+  _onPress = () => {};
 }
 
 export default App;
@@ -86,6 +86,6 @@ const styles = StyleSheet.create({
   codeDisplay: {
     backgroundColor: 'lightgrey',
     borderRadius: 4,
-    padding: 8
-  }
-})
+    padding: 8,
+  },
+});
