@@ -3,6 +3,7 @@
 - Easy to configure templates
 - Full control of `value` and `onChange`
 - Handled `errors` and `touched` for you
+- Disable / Hide fields by conditions
 
 # Installation
 
@@ -14,7 +15,7 @@ $ cd .. && react-native run-ios
 
 # TODOs
 
-- ✅Can configure and render custom templates
+- ✅Render custom templates
 - ✅Handle `value` and `onChange` through props (i.e. a **controlled** form)
 - ✅Angular-like `touched`
 - Inter-fields validation
