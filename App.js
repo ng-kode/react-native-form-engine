@@ -45,6 +45,18 @@ class App extends React.Component {
                   secureTextEntry: true,
                 },
               },
+              {
+                template: 'PickerField',
+                path: 'preferredOS',
+                options: {
+                  label: 'Your preferred OS',
+                  options: [
+                    {label: 'Mac OS', value: 'mac'},
+                    {label: 'Windows', value: 'windows'},
+                    {label: 'Linux', value: 'linux'},
+                  ],
+                },
+              },
             ]}
             value={value}
             onChange={this._onChange}
