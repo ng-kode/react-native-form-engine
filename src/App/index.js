@@ -31,12 +31,12 @@ class App extends React.Component {
             constraints={constraints}
             value={value}
             onChange={this._onChange}>
-            {({isFormValid, isFormTouched}) => (
+            {({isFormValid, isFormDirty}) => (
               <View style={styles.submitButtonWrapper}>
                 <Button
                   title="Submit"
                   onPress={this._onPress}
-                  disabled={!isFormValid || !isFormTouched}
+                  disabled={!isFormValid || !isFormDirty}
                 />
               </View>
             )}

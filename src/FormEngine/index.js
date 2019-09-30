@@ -10,6 +10,7 @@ class FormEngine extends React.Component {
   state = {
     errors: {},
     touched: {},
+    isFormDirty: false,
   };
 
   render() {
@@ -73,13 +74,13 @@ class FormEngine extends React.Component {
   };
 
   renderChildrenFunction = () => {
-    const {errors, touched} = this.state;
+    const {errors, isFormDirty} = this.state;
     const isFormValid = Object.keys(errors).length === 0;
-    const isFormTouched = Object.keys(touched).length > 0;
-    return this.props.children({isFormValid, isFormTouched});
+    return this.props.children({isFormValid, isFormDirty});
   };
 
   handleChange = (path, value) => {
+    this.setState({isFormDirty: true});
     const {value: currentState, fields, onChange} = this.props;
 
     let nextState = produce(currentState, draftState => {
