@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 
-const TextField = ({fromEngine, options}) => {
+const TextField = ({fromEngine, customize}) => {
   const {touched, errorText, onChange, ...rest} = fromEngine;
   const showError = touched && errorText;
   const styles = makeStyles(showError);
-  const {label, ...restOptions} = options;
+  const {label, ...restOptions} = customize;
 
   return (
     <View style={styles.wrapper}>

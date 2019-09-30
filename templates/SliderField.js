@@ -2,9 +2,9 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Slider from '@react-native-community/slider';
 
-const SliderField = ({fromEngine, options = {}}) => {
+const SliderField = ({fromEngine, customize}) => {
   const {value, onChange, errorText} = fromEngine;
-  const {label, ...restOptions} = options;
+  const {label, ...restOptions} = customize;
   const showError = !!errorText;
   const styles = makeStyle(showError);
 

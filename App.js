@@ -18,21 +18,21 @@ class App extends React.Component {
               {
                 template: 'TextField',
                 path: 'username',
-                options: {
+                customize: {
                   label: 'Username',
                 },
               },
               {
                 template: 'TextField',
                 path: 'email',
-                options: {
+                customize: {
                   label: 'Email',
                 },
               },
               {
                 template: 'TextField',
                 path: 'password',
-                options: {
+                customize: {
                   label: 'Password',
                   secureTextEntry: true,
                 },
@@ -40,7 +40,7 @@ class App extends React.Component {
               {
                 template: 'TextField',
                 path: 'confirmPassword',
-                options: {
+                customize: {
                   label: 'Confirm Password',
                   secureTextEntry: true,
                 },
@@ -48,7 +48,7 @@ class App extends React.Component {
               {
                 template: 'PickerField',
                 path: 'preferredOS',
-                options: {
+                customize: {
                   label: 'Your preferred OS',
                   options: [
                     {label: 'Mac OS', value: 'mac'},
@@ -60,7 +60,7 @@ class App extends React.Component {
               {
                 template: 'SliderField',
                 path: 'investmentPercent',
-                options: {
+                customize: {
                   label: 'Investment Percentage (%)',
                   minimumValue: 0,
                   maximumValue: 100,

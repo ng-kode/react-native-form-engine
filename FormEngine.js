@@ -25,7 +25,7 @@ class FormEngine extends React.Component {
       <>
         {fields.map(field => {
           this.throwInvalidField(field);
-          const {template, path, options} = field;
+          const {template, path, customize} = field;
           const Component = templates[template];
           const fromEngine = {
             value: lodash.get(currentState, path),
@@ -36,7 +36,11 @@ class FormEngine extends React.Component {
           };
 
           return (
-            <Component key={path} fromEngine={fromEngine} options={options} />
+            <Component
+              key={path}
+              fromEngine={fromEngine}
+              customize={customize}
+            />
           );
         })}
       </>
@@ -44,7 +48,7 @@ class FormEngine extends React.Component {
   }
 
   throwInvalidField = field => {
-    const {template, path, options} = field;
+    const {template, path} = field;
 
     if (!path) {
       throw Error(`path is missing for field ${JSON.stringify(field)}`);
