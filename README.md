@@ -18,7 +18,7 @@ $ cd .. && react-native run-ios
 - ✅Render custom templates
 - ✅Handle `value` and `onChange` through props (i.e. a **controlled** form)
 - ✅Angular-like `touched`
-- Inter-fields validation
+- ✅Inter-fields validation
 - Array of Objects
 - Disable / Hide fields by condition
 - Auto-generate Doc
