@@ -13,51 +13,16 @@ class FormEngine extends React.Component {
   };
 
   render() {
-    const {
-      fields,
-      value: currentState,
-      verticalSpacing: marginBottom,
-      templates,
-    } = this.props;
-    const {errors, touched} = this.state;
-    const makeSpacing = idx =>
-      idx === fields.length - 1 ? {} : {marginBottom};
+    const {fields, value: currentState} = this.props;
+    const visibleFields = fields.filter(({showOnlyWhen = () => true}) =>
+      showOnlyWhen(currentState),
+    );
 
     return (
       <>
-        {fields.map((field, idx) => {
+        {visibleFields.map((field, idx) => {
           this.throwInvalidField(field);
-          const {
-            template,
-            path,
-            customize: customizeRaw,
-            showOnlyWhen = () => true,
-          } = field;
-          if (!showOnlyWhen(currentState)) {
-            return;
-          }
-
-          const customize =
-            typeof customizeRaw === 'function'
-              ? customizeRaw(currentState)
-              : customizeRaw;
-          const key = path || customize.title;
-          const Component = templates[template];
-          const fromEngine = {
-            value: lodash.get(currentState, path),
-            onChange: value => this.handleChange(path, value),
-            onBlur: () => this.handleBlur(path),
-            touched: touched[path],
-            errorText: (errors[path] || [])[0],
-          };
-
-          return (
-            <React.Fragment key={key}>
-              <View style={makeSpacing(idx)}>
-                <Component fromEngine={fromEngine} customize={customize} />
-              </View>
-            </React.Fragment>
-          );
+          return this.renderField(field, idx === visibleFields.length - 1);
         })}
       </>
     );
@@ -69,6 +34,38 @@ class FormEngine extends React.Component {
     if (!template) {
       throw Error(`template is missing for field ${JSON.stringify(field)}`);
     }
+  };
+
+  renderField = (field, isLast) => {
+    const {template, path, customize: customizeRaw} = field;
+    const {
+      value: currentState,
+      templates,
+      verticalSpacing: marginBottom,
+    } = this.props;
+    const {errors, touched} = this.state;
+
+    const customize =
+      typeof customizeRaw === 'function'
+        ? customizeRaw(currentState)
+        : customizeRaw;
+    const key = path || customize.title;
+    const Component = templates[template];
+    const fromEngine = {
+      value: lodash.get(currentState, path),
+      onChange: value => this.handleChange(path, value),
+      onBlur: () => this.handleBlur(path),
+      touched: touched[path],
+      errorText: (errors[path] || [])[0],
+    };
+
+    return (
+      <React.Fragment key={key}>
+        <View style={!isLast && {marginBottom}}>
+          <Component fromEngine={fromEngine} customize={customize} />
+        </View>
+      </React.Fragment>
+    );
   };
 
   handleChange = (path, value) => {
