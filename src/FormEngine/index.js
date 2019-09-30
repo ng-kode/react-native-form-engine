@@ -27,7 +27,16 @@ class FormEngine extends React.Component {
       <>
         {fields.map((field, idx) => {
           this.throwInvalidField(field);
-          const {template, path, customize, showOnlyWhen = () => true} = field;
+          const {
+            template,
+            path,
+            customize: customizeRaw,
+            showOnlyWhen = () => true,
+          } = field;
+          const customize =
+            typeof customizeRaw === 'function'
+              ? customizeRaw(currentState)
+              : customizeRaw;
           const key = path || customize.title;
           const Component = templates[template];
           const fromEngine = {
