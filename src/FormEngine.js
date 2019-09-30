@@ -4,7 +4,7 @@ import produce from 'immer';
 import {View} from 'react-native';
 import lodash from 'lodash';
 import validate from 'validate.js';
-import templates from './templates';
+import defaultTemplates from './templates';
 
 class FormEngine extends React.Component {
   state = {
@@ -17,6 +17,7 @@ class FormEngine extends React.Component {
       fields,
       value: currentState,
       verticalSpacing: marginBottom,
+      templates,
     } = this.props;
     const {errors, touched} = this.state;
     const makeSpacing = idx =>
@@ -87,11 +88,13 @@ FormEngine.propTypes = {
   fields: PropTypes.array.isRequired,
   constraints: PropTypes.object,
   verticalSpacing: PropTypes.number,
+  templates: PropTypes.object,
 };
 
 FormEngine.defaultProps = {
   constraints: {},
   verticalSpacing: 16,
+  templates: defaultTemplates,
 };
 
 export default FormEngine;
