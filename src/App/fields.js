@@ -1,5 +1,12 @@
 export default [
   {
+    template: 'Text',
+    customize: {
+      title: 'Your Profile',
+      type: 'h1',
+    },
+  },
+  {
     template: 'TextField',
     path: 'username',
     customize: {
