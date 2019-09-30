@@ -21,5 +21,7 @@ $ cd .. && react-native run-ios
 - ✅Angular-like `touched`
 - ✅Inter-fields validation
 - Array of Objects
-- Disable / Hide fields by condition
+- Show fields by condition
+  - remove value when hidden
+- Disable fields by condition
 - Auto-generate Doc
