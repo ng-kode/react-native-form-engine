@@ -76,9 +76,6 @@ class FormEngine extends React.Component {
       draftTouched[path] = true;
     });
     this.setState({touched});
-
-    const {value: currentState} = this.props;
-    this.handleValidate(currentState);
   };
 }
 
