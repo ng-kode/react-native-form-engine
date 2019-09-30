@@ -13,8 +13,8 @@ const SliderField = ({fromEngine, customize}) => {
       <Text style={styles.label}>
         {label}: {value}
       </Text>
-      <Slider value={value} onValueChange={onChange} {...restOptions} />
       {showError && <Text style={styles.errorText}>{errorText}</Text>}
+      <Slider value={value} onValueChange={onChange} {...restOptions} />
     </View>
   );
 };
@@ -27,6 +27,7 @@ const makeStyle = showError =>
     },
     errorText: {
       color: 'red',
+      fontSize: 12,
     },
   });
 
