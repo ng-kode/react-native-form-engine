@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Button, StyleSheet, SafeAreaView, Text} from 'react-native';
+import {
+  View,
+  Button,
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  ScrollView,
+} from 'react-native';
 import FormEngine from './FormEngine';
 
 class App extends React.Component {
@@ -12,7 +19,7 @@ class App extends React.Component {
 
     return (
       <SafeAreaView>
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <FormEngine
             fields={[
               {
@@ -67,6 +74,13 @@ class App extends React.Component {
                   step: 1,
                 },
               },
+              {
+                template: 'SwitchField',
+                path: 'rememberMe',
+                customize: {
+                  label: 'Remember Me',
+                },
+              },
             ]}
             value={value}
             onChange={this._onChange}
@@ -79,7 +93,7 @@ class App extends React.Component {
             <Text style={styles.title}>Form Value</Text>
             <Text>{JSON.stringify(value, null, 2)}</Text>
           </View>
-        </View>
+        </ScrollView>
       </SafeAreaView>
     );
   };
