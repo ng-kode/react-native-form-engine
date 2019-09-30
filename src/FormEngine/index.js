@@ -33,6 +33,10 @@ class FormEngine extends React.Component {
             customize: customizeRaw,
             showOnlyWhen = () => true,
           } = field;
+          if (!showOnlyWhen(currentState)) {
+            return;
+          }
+
           const customize =
             typeof customizeRaw === 'function'
               ? customizeRaw(currentState)
@@ -49,11 +53,9 @@ class FormEngine extends React.Component {
 
           return (
             <React.Fragment key={key}>
-              {showOnlyWhen(currentState) && (
-                <View style={makeSpacing(idx)}>
-                  <Component fromEngine={fromEngine} customize={customize} />
-                </View>
-              )}
+              <View style={makeSpacing(idx)}>
+                <Component fromEngine={fromEngine} customize={customize} />
+              </View>
             </React.Fragment>
           );
         })}
