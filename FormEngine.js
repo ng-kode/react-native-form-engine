@@ -26,19 +26,16 @@ class FormEngine extends React.Component {
           this.throwInvalidField(field);
           const {template, path, options} = field;
           const Component = templates[template];
-          const fieldValue = lodash.get(currentState, path);
-          const errorText = (errors[path] || [])[0];
+          const fromEngine = {
+            value: lodash.get(currentState, path),
+            onChange: value => this.handleChange(path, value),
+            onBlur: () => this.handleBlur(path),
+            touched: touched[path],
+            errorText: (errors[path] || [])[0],
+          };
 
           return (
-            <Component
-              key={path}
-              value={fieldValue}
-              onChange={value => this.handleChange(path, value)}
-              onBlur={() => this.handleBlur(path)}
-              errorText={errorText}
-              touched={touched[path]}
-              options={options}
-            />
+            <Component key={path} fromEngine={fromEngine} options={options} />
           );
         })}
       </>

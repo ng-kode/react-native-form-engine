@@ -1,7 +1,8 @@
 import React from 'react';
 import {Picker, View, Text, StyleSheet} from 'react-native';
 
-const PickerField = ({value: selectedValue, onChange, errorText, options}) => {
+const PickerField = ({fromEngine, options}) => {
+  const {errorText, value: selectedValue, onChange} = fromEngine;
   const showError = !!errorText;
   const styles = makeStyles(showError);
 
