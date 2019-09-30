@@ -22,6 +22,6 @@ $ cd .. && react-native run-ios
 - ✅Inter-fields validation
 - Array of Objects
 - ✅Show fields by condition
-  - remove value when hidden
+  - ✅remove value when hidden
 - ✅Disable fields by condition
 - Auto-generate Doc
