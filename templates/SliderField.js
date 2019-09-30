@@ -9,7 +9,7 @@ const SliderField = ({fromEngine, customize}) => {
   const styles = makeStyle(showError);
 
   return (
-    <View style={styles.container}>
+    <View>
       <Text style={styles.label}>
         {label}: {value}
       </Text>
@@ -21,9 +21,6 @@ const SliderField = ({fromEngine, customize}) => {
 
 const makeStyle = showError =>
   StyleSheet.create({
-    container: {
-      marginVertical: 16,
-    },
     label: {
       fontWeight: 'bold',
       ...(showError && {color: 'red'}),

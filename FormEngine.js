@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import produce from 'immer';
+import {View, StyleSheet} from 'react-native';
 import lodash from 'lodash';
 import validate from 'validate.js';
 import templates from './templates';
@@ -18,12 +19,18 @@ class FormEngine extends React.Component {
   };
 
   render() {
-    const {fields, value: currentState} = this.props;
+    const {
+      fields,
+      value: currentState,
+      verticalSpacing: marginBottom,
+    } = this.props;
     const {errors, touched} = this.state;
+    const makeSpacing = idx =>
+      idx === fields.length - 1 ? {} : {marginBottom};
 
     return (
       <>
-        {fields.map(field => {
+        {fields.map((field, idx) => {
           this.throwInvalidField(field);
           const {template, path, customize} = field;
           const Component = templates[template];
@@ -36,11 +43,9 @@ class FormEngine extends React.Component {
           };
 
           return (
-            <Component
-              key={path}
-              fromEngine={fromEngine}
-              customize={customize}
-            />
+            <View key={path} style={makeSpacing(idx)}>
+              <Component fromEngine={fromEngine} customize={customize} />
+            </View>
           );
         })}
       </>
@@ -85,6 +90,11 @@ FormEngine.propTypes = {
   value: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   fields: PropTypes.array.isRequired,
+  verticalSpacing: PropTypes.number,
+};
+
+FormEngine.defaultProps = {
+  verticalSpacing: 16,
 };
 
 export default FormEngine;

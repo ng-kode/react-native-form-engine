@@ -20,6 +20,10 @@ class App extends React.Component {
     return (
       <SafeAreaView>
         <ScrollView style={styles.container}>
+          <View style={styles.codeDisplay}>
+            <Text style={styles.title}>Form Value</Text>
+            <Text>{JSON.stringify(value, null, 2)}</Text>
+          </View>
           <FormEngine
             fields={[
               {
@@ -85,13 +89,9 @@ class App extends React.Component {
             value={value}
             onChange={this._onChange}
           />
-          <Button title="Submit" onPress={this._onPress} />
 
-          <View style={styles.spacer} />
-
-          <View style={styles.codeDisplay}>
-            <Text style={styles.title}>Form Value</Text>
-            <Text>{JSON.stringify(value, null, 2)}</Text>
+          <View style={styles.submitButtonWrapper}>
+            <Button title="Submit" onPress={this._onPress} />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -109,19 +109,19 @@ export default App;
 
 const styles = StyleSheet.create({
   container: {
-    paddingLeft: 16,
-    paddingRight: 16,
+    paddingHorizontal: 16,
   },
   title: {
     fontWeight: 'bold',
     marginBottom: 4,
   },
-  spacer: {
-    height: 16,
+  submitButtonWrapper: {
+    marginVertical: 16,
   },
   codeDisplay: {
     backgroundColor: 'lightgrey',
     borderRadius: 4,
     padding: 8,
+    marginVertical: 16,
   },
 });

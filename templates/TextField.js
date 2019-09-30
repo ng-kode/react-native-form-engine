@@ -8,7 +8,7 @@ const TextField = ({fromEngine, customize}) => {
   const {label, ...restOptions} = customize;
 
   return (
-    <View style={styles.wrapper}>
+    <View>
       <Text style={styles.label}>{label}</Text>
       <TextInput
         style={styles.textInput}
@@ -23,7 +23,6 @@ const TextField = ({fromEngine, customize}) => {
 
 const makeStyles = showError =>
   StyleSheet.create({
-    wrapper: {marginBottom: 16},
     label: {marginBottom: 4, fontWeight: 'bold'},
     textInput: {
       borderWidth: 1,
