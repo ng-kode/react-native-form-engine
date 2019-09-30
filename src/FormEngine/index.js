@@ -27,7 +27,7 @@ class FormEngine extends React.Component {
       <>
         {fields.map((field, idx) => {
           this.throwInvalidField(field);
-          const {template, path, customize} = field;
+          const {template, path, customize, showOnlyWhen = () => true} = field;
           const key = path || customize.title;
           const Component = templates[template];
           const fromEngine = {
@@ -39,9 +39,13 @@ class FormEngine extends React.Component {
           };
 
           return (
-            <View key={key} style={makeSpacing(idx)}>
-              <Component fromEngine={fromEngine} customize={customize} />
-            </View>
+            <React.Fragment key={key}>
+              {showOnlyWhen(currentState) && (
+                <View style={makeSpacing(idx)}>
+                  <Component fromEngine={fromEngine} customize={customize} />
+                </View>
+              )}
+            </React.Fragment>
           );
         })}
       </>

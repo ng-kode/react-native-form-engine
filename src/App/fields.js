@@ -15,13 +15,6 @@ export default [
   },
   {
     template: 'TextField',
-    path: 'email',
-    customize: {
-      label: 'Email',
-    },
-  },
-  {
-    template: 'TextField',
     path: 'password',
     customize: {
       label: 'Password',
@@ -79,10 +72,19 @@ export default [
     },
   },
   {
+    path: 'shouldEmailMe',
     template: 'SwitchField',
-    path: 'rememberMe',
     customize: {
-      label: 'Remember Me',
+      label: 'Send me email',
+    },
+  },
+  {
+    path: 'email',
+    template: 'TextField',
+    showOnlyWhen: formValue => formValue['shouldEmailMe'],
+    customize: {
+      label: 'Email',
+      keyboardType: 'email-address',
     },
   },
 ];
