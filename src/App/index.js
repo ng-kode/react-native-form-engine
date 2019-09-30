@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import FormEngine from '../FormEngine';
 import fields from './fields';
-import constraints from './constraints';
+import validation from './validation';
 
 class App extends React.Component {
   state = {
@@ -28,7 +28,7 @@ class App extends React.Component {
           </View>
           <FormEngine
             fields={fields}
-            constraints={constraints}
+            validation={validation}
             value={value}
             onChange={this._onChange}>
             {({isFormValid, isFormDirty}) => (

@@ -102,8 +102,8 @@ class FormEngine extends React.Component {
   };
 
   handleValidate = nextState => {
-    const {constraints} = this.props;
-    const errors = validate(nextState, constraints) || {};
+    const {validation} = this.props;
+    const errors = validate(nextState, validation) || {};
     this.setState({errors});
   };
 
@@ -119,13 +119,13 @@ FormEngine.propTypes = {
   value: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   fields: PropTypes.array.isRequired,
-  constraints: PropTypes.object,
+  validation: PropTypes.object,
   verticalSpacing: PropTypes.number,
   templates: PropTypes.object,
 };
 
 FormEngine.defaultProps = {
-  constraints: {},
+  validation: {},
   verticalSpacing: 16,
   templates: defaultTemplates,
 };
