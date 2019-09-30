@@ -1,16 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import produce from 'immer';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import lodash from 'lodash';
 import validate from 'validate.js';
 import templates from './templates';
-
-const constraints = {
-  email: {email: {message: '^INVALID_EMAIL'}},
-  preferredOS: {exclusion: ['windows']},
-  investmentPercent: {numericality: {greaterThanOrEqualTo: 5}},
-};
 
 class FormEngine extends React.Component {
   state = {
@@ -74,6 +68,7 @@ class FormEngine extends React.Component {
   };
 
   handleValidate = nextState => {
+    const {constraints} = this.props;
     const errors = validate(nextState, constraints) || {};
     this.setState({errors});
   };
@@ -90,10 +85,12 @@ FormEngine.propTypes = {
   value: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   fields: PropTypes.array.isRequired,
+  constraints: PropTypes.object,
   verticalSpacing: PropTypes.number,
 };
 
 FormEngine.defaultProps = {
+  constraints: {},
   verticalSpacing: 16,
 };
 
