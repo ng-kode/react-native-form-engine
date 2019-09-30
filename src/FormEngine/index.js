@@ -69,10 +69,22 @@ class FormEngine extends React.Component {
   };
 
   handleChange = (path, value) => {
-    const {value: currentState, onChange} = this.props;
-    const nextState = produce(currentState, draftState =>
-      lodash.set(draftState, path, value),
+    const {value: currentState, fields, onChange} = this.props;
+
+    let nextState = produce(currentState, draftState => {
+      lodash.set(draftState, path, value);
+    });
+
+    const fieldsToHide = fields.filter(
+      ({showOnlyWhen = () => true}) => !showOnlyWhen(nextState),
     );
+
+    nextState = produce(nextState, draftState => {
+      fieldsToHide.forEach(field => {
+        lodash.unset(draftState, field.path);
+      });
+    });
+
     onChange(nextState);
     this.handleValidate(nextState);
   };
