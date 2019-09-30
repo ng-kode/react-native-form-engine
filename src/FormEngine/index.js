@@ -45,11 +45,6 @@ class FormEngine extends React.Component {
     } = this.props;
     const {errors, touched} = this.state;
 
-    const customize =
-      typeof customizeRaw === 'function'
-        ? customizeRaw(currentState)
-        : customizeRaw;
-    const key = path || customize.title;
     const Component = templates[template];
     const fromEngine = {
       value: lodash.get(currentState, path),
@@ -59,8 +54,13 @@ class FormEngine extends React.Component {
       errorText: (errors[path] || [])[0],
     };
 
+    const customize =
+      typeof customizeRaw === 'function'
+        ? customizeRaw(currentState)
+        : customizeRaw;
+
     return (
-      <React.Fragment key={key}>
+      <React.Fragment key={path || customize.title}>
         <View style={!isLast && {marginBottom}}>
           <Component fromEngine={fromEngine} customize={customize} />
         </View>
