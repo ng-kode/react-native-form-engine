@@ -7,7 +7,7 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
-import FormEngine from './FormEngine';
+import FormEngine from '../FormEngine';
 import fields from './fields';
 import constraints from './constraints';
 
