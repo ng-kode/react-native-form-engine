@@ -8,6 +8,7 @@ import templates from './templates';
 const constraints = {
   email: {email: {message: '^INVALID_EMAIL'}},
   preferredOS: {exclusion: ['windows']},
+  investmentPercent: {numericality: {greaterThanOrEqualTo: 5}},
 };
 
 class FormEngine extends React.Component {

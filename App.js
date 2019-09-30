@@ -57,6 +57,16 @@ class App extends React.Component {
                   ],
                 },
               },
+              {
+                template: 'SliderField',
+                path: 'investmentPercent',
+                options: {
+                  label: 'Investment Percentage (%)',
+                  minimumValue: 0,
+                  maximumValue: 100,
+                  step: 1,
+                },
+              },
             ]}
             value={value}
             onChange={this._onChange}
