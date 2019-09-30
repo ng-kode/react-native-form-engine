@@ -24,4 +24,5 @@ $ cd .. && react-native run-ios
 - ✅Show fields by condition
   - ✅remove value when hidden
 - ✅Disable fields by condition
+- ✅retrieve `isFormValid`, `isFormTouched` from `FormEngine`
 - Auto-generate Doc

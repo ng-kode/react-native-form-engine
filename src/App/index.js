@@ -30,12 +30,17 @@ class App extends React.Component {
             fields={fields}
             constraints={constraints}
             value={value}
-            onChange={this._onChange}
-          />
-
-          <View style={styles.submitButtonWrapper}>
-            <Button title="Submit" onPress={this._onPress} />
-          </View>
+            onChange={this._onChange}>
+            {({isFormValid, isFormTouched}) => (
+              <View style={styles.submitButtonWrapper}>
+                <Button
+                  title="Submit"
+                  onPress={this._onPress}
+                  disabled={!isFormValid || !isFormTouched}
+                />
+              </View>
+            )}
+          </FormEngine>
         </ScrollView>
       </SafeAreaView>
     );

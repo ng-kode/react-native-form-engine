@@ -13,7 +13,7 @@ class FormEngine extends React.Component {
   };
 
   render() {
-    const {fields, value: currentState} = this.props;
+    const {fields, value: currentState, children} = this.props;
     const visibleFields = fields.filter(({showOnlyWhen = () => true}) =>
       showOnlyWhen(currentState),
     );
@@ -24,6 +24,10 @@ class FormEngine extends React.Component {
           this.throwInvalidField(field);
           return this.renderField(field, idx === visibleFields.length - 1);
         })}
+
+        {typeof children === 'function'
+          ? this.renderChildrenFunction()
+          : children}
       </>
     );
   }
@@ -66,6 +70,13 @@ class FormEngine extends React.Component {
         </View>
       </React.Fragment>
     );
+  };
+
+  renderChildrenFunction = () => {
+    const {errors, touched} = this.state;
+    const isFormValid = Object.keys(errors).length === 0;
+    const isFormTouched = Object.keys(touched).length > 0;
+    return this.props.children({isFormValid, isFormTouched});
   };
 
   handleChange = (path, value) => {
