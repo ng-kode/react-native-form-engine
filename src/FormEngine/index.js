@@ -14,11 +14,23 @@ class FormEngine extends React.Component {
     isFormDirty: false,
   };
 
-  render() {
-    const {fields, value: currentState, children} = this.props;
-    const visibleFields = fields.filter(({showOnlyWhen = () => true}) =>
-      showOnlyWhen(currentState),
+  getVisibleFields(state) {
+    const {fields} = this.props;
+    return fields.filter(
+      ({showOnlyWhen}) => validate(state, showOnlyWhen) === undefined,
     );
+  }
+
+  getHiddenFields(state) {
+    const {fields} = this.props;
+    return fields.filter(
+      ({showOnlyWhen}) => validate(state, showOnlyWhen) !== undefined,
+    );
+  }
+
+  render() {
+    const {children, value: currentState} = this.props;
+    const visibleFields = this.getVisibleFields(currentState);
 
     return (
       <>
@@ -86,15 +98,13 @@ class FormEngine extends React.Component {
       isFormDirty: true,
       dirty: {...this.state.dirty, [path]: true},
     });
-    const {value: currentState, fields, onChange} = this.props;
+    const {value: currentState, onChange} = this.props;
 
     let nextState = produce(currentState, draftState => {
       lodash.set(draftState, path, value);
     });
 
-    const fieldsToHide = fields.filter(
-      ({showOnlyWhen = () => true}) => !showOnlyWhen(nextState),
-    );
+    const fieldsToHide = this.getHiddenFields(nextState);
 
     nextState = produce(nextState, draftState => {
       fieldsToHide.forEach(field => {

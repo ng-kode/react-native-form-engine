@@ -82,7 +82,7 @@ export default [
   {
     path: 'email',
     template: 'TextField',
-    showOnlyWhen: formValue => formValue['shouldEmailMe'],
+    showOnlyWhen: {shouldEmailMe: {presence: true, inclusion: [true]}},
     customize: {
       label: 'Email',
       keyboardType: 'email-address',
