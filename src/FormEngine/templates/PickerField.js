@@ -2,8 +2,8 @@ import React from 'react';
 import {Picker, View, Text, StyleSheet} from 'react-native';
 
 const PickerField = ({fromEngine, customize}) => {
-  const {errorText, value: selectedValue, onChange} = fromEngine;
-  const showError = !!errorText;
+  const {errorText, value: selectedValue, onChange, dirty} = fromEngine;
+  const showError = !!errorText && dirty;
   const styles = makeStyles(showError);
   const {label, options} = customize;
 

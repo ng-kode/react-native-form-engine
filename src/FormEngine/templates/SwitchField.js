@@ -2,9 +2,9 @@ import React from 'react';
 import {View, Text, Switch, StyleSheet} from 'react-native';
 
 const SwitchField = ({fromEngine, customize}) => {
-  const {value, onChange, errorText} = fromEngine;
+  const {value, onChange, errorText, dirty} = fromEngine;
   const {label} = customize;
-  const showError = !!errorText;
+  const showError = !!errorText && dirty;
   const styles = makeStyles(showError);
 
   return (

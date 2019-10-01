@@ -10,6 +10,7 @@ class FormEngine extends React.Component {
   state = {
     errors: {},
     touched: {},
+    dirty: {},
     isFormDirty: false,
   };
 
@@ -48,7 +49,7 @@ class FormEngine extends React.Component {
       templates,
       verticalSpacing: marginBottom,
     } = this.props;
-    const {errors, touched} = this.state;
+    const {errors, touched, dirty} = this.state;
 
     const Component = templates[template];
     const fromEngine = {
@@ -56,6 +57,7 @@ class FormEngine extends React.Component {
       onChange: value => this.handleChange(path, value),
       onBlur: () => this.handleBlur(path),
       touched: touched[path],
+      dirty: dirty[path],
       errorText: (errors[path] || [])[0],
     };
 
@@ -80,7 +82,10 @@ class FormEngine extends React.Component {
   };
 
   handleChange = (path, value) => {
-    this.setState({isFormDirty: true});
+    this.setState({
+      isFormDirty: true,
+      dirty: {...this.state.dirty, [path]: true},
+    });
     const {value: currentState, fields, onChange} = this.props;
 
     let nextState = produce(currentState, draftState => {
