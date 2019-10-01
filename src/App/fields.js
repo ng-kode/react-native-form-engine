@@ -82,9 +82,14 @@ export default [
     },
   },
   {
-    path: 'email',
+    path: 'myEmail',
     template: 'TextField',
-    showOnlyWhen: {shouldEmailMe: {presence: true, inclusion: [true]}},
+    showOnlyWhen: {
+      shouldEmailMe: {
+        presence: true,
+        inclusion: [true],
+      },
+    },
     customize: {
       label: 'Email',
       keyboardType: 'email-address',

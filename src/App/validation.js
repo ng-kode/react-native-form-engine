@@ -1,10 +1,10 @@
 import validate from 'validate.js';
 import lodash from 'lodash';
 
-validate.validators.sumToHundred = (value, options, key, attributes) => {
-  const paths = options.paths.filter(path => path !== key).concat(key);
+validate.validators.sumToHundred = (value, options, key, formValue) => {
+  const paths = options.composition.filter(path => path !== key).concat(key);
   const sum = paths.reduce((acc, path) => {
-    return (acc += lodash.get(attributes, path) || 0);
+    return (acc += lodash.get(formValue, path) || 0);
   }, 0);
 
   if (sum !== 100) {
@@ -13,10 +13,28 @@ validate.validators.sumToHundred = (value, options, key, attributes) => {
 };
 
 export default {
-  email: {email: {message: '^INVALID_EMAIL'}},
-  preferredOS: {exclusion: ['windows']},
-  confirmPassword: {equality: 'password'},
-  investA: {sumToHundred: {paths: ['investA', 'investB', 'investC']}},
-  investB: {sumToHundred: {paths: ['investA', 'investB', 'investC']}},
-  investC: {sumToHundred: {paths: ['investA', 'investB', 'investC']}},
+  myEmail: {
+    email: {message: '^INVALID_EMAIL'},
+  },
+  preferredOS: {
+    exclusion: ['windows'],
+  },
+  confirmPassword: {
+    equality: 'password',
+  },
+  investA: {
+    sumToHundred: {
+      composition: ['investA', 'investB', 'investC'],
+    },
+  },
+  investB: {
+    sumToHundred: {
+      composition: ['investA', 'investB', 'investC'],
+    },
+  },
+  investC: {
+    sumToHundred: {
+      composition: ['investA', 'investB', 'investC'],
+    },
+  },
 };
