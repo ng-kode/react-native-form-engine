@@ -5,6 +5,7 @@ import {View} from 'react-native';
 import lodash from 'lodash';
 import validate from 'validate.js';
 import defaultTemplates from './templates';
+import * as utils from './utils';
 
 class FormEngine extends React.Component {
   state = {
@@ -14,34 +15,18 @@ class FormEngine extends React.Component {
     isFormDirty: false,
   };
 
-  getVisibleFields(state) {
-    const {fields} = this.props;
-    return fields.filter(
-      ({showOnlyWhen}) => validate(state, showOnlyWhen) === undefined,
-    );
-  }
-
-  getHiddenFields(state) {
-    const {fields} = this.props;
-    return fields.filter(
-      ({showOnlyWhen}) => validate(state, showOnlyWhen) !== undefined,
-    );
-  }
-
   render() {
-    const {children, value: currentState} = this.props;
-    const visibleFields = this.getVisibleFields(currentState);
+    const {children, value: currentState, fields} = this.props;
+    const visibleFields = utils.getVisibleFields(fields, currentState);
 
     return (
       <>
         {visibleFields.map((field, idx) => {
-          this.throwInvalidField(field);
-          return this.renderField(field, idx === visibleFields.length - 1);
+          const addSpacing = idx !== visibleFields.length - 1;
+          return this.renderField(field, addSpacing);
         })}
 
-        {typeof children === 'function'
-          ? this.renderChildrenFunction()
-          : children}
+        {typeof children === 'function' ? this.renderChildren() : children}
       </>
     );
   }
@@ -54,72 +39,56 @@ class FormEngine extends React.Component {
     }
   };
 
-  renderField = (field, isLast) => {
+  renderField = (field, addSpacing) => {
+    this.throwInvalidField(field);
     const {template, path, customize: customizeRaw} = field;
-    const {
-      value: currentState,
-      templates,
-      verticalSpacing: marginBottom,
-    } = this.props;
+    const {value: currentState, templates, verticalSpacing} = this.props;
     const {errors, touched, dirty} = this.state;
-
     const Component = templates[template];
-    const fromEngine = {
-      value: lodash.get(currentState, path),
-      onChange: value => this.handleChange(path, value),
-      onBlur: () => this.handleBlur(path),
-      touched: touched[path],
-      dirty: dirty[path],
-      errorText: (errors[path] || [])[0],
-    };
-
-    const customize = Object.keys(customizeRaw).reduce((acc, attr) => {
-      const rawValue = customizeRaw[attr];
-      if (rawValue.validation !== undefined) {
-        const evaluatedValue =
-          validate(currentState, rawValue.validation) === undefined;
-        return {...acc, [attr]: evaluatedValue};
-      } else {
-        return {...acc, [attr]: rawValue};
-      }
-    }, {});
+    const customize = utils.evaluateCustomize(customizeRaw, currentState);
 
     return (
       <React.Fragment key={path || customize.title}>
-        <View style={!isLast && {marginBottom}}>
-          <Component fromEngine={fromEngine} customize={customize} />
+        <View style={addSpacing && {marginBottom: verticalSpacing}}>
+          <Component
+            fromEngine={{
+              value: lodash.get(currentState, path),
+              onChange: value => this.handleChange(path, value),
+              onBlur: () => this.handleBlur(path),
+              touched: touched[path],
+              dirty: dirty[path],
+              errorText: (errors[path] || [])[0],
+            }}
+            customize={customize}
+          />
         </View>
       </React.Fragment>
     );
   };
 
-  renderChildrenFunction = () => {
+  renderChildren = () => {
     const {errors, isFormDirty} = this.state;
     const isFormValid = Object.keys(errors).length === 0;
     return this.props.children({isFormValid, isFormDirty});
   };
 
   handleChange = (path, value) => {
+    this.markDirty(path);
+
+    const {value: currentState, onChange, fields} = this.props;
+    let nextState = utils.patchValue(path, value, currentState);
+    const nextVisibleFields = utils.getVisibleFields(fields, nextState);
+    nextState = lodash.pick(nextState, nextVisibleFields.map(f => f.path));
+
+    onChange(nextState);
+    this.handleValidate(nextState);
+  };
+
+  markDirty = path => {
     this.setState({
       isFormDirty: true,
       dirty: {...this.state.dirty, [path]: true},
     });
-    const {value: currentState, onChange} = this.props;
-
-    let nextState = produce(currentState, draftState => {
-      lodash.set(draftState, path, value);
-    });
-
-    const fieldsToHide = this.getHiddenFields(nextState);
-
-    nextState = produce(nextState, draftState => {
-      fieldsToHide.forEach(field => {
-        lodash.unset(draftState, field.path);
-      });
-    });
-
-    onChange(nextState);
-    this.handleValidate(nextState);
   };
 
   handleValidate = nextState => {
@@ -129,10 +98,7 @@ class FormEngine extends React.Component {
   };
 
   handleBlur = path => {
-    const touched = produce(this.state.touched, draftTouched => {
-      draftTouched[path] = true;
-    });
-    this.setState({touched});
+    this.setState({touched: {...this.state.touched, [path]: true}});
   };
 }
 
