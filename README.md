@@ -1,8 +1,8 @@
 # Features
 
-- Easy to configure templates (for both inputs and displays)
+- Easy to configure templates (for both inputs and ui components)
 - Full control of `value` and `onChange`
-- Handled `errors` and `touched` for you
+- `errors` and `dirty`/`touched` available
 - Disable / Hide fields by conditions
 
 # Installation
