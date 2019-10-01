@@ -24,11 +24,13 @@ export default [
   {
     template: 'TextField',
     path: 'confirmPassword',
-    customize: formValue => ({
+    customize: {
       label: 'Confirm Password',
       secureTextEntry: true,
-      editable: !!formValue['password'],
-    }),
+      editable: {
+        validation: {password: {presence: true}},
+      },
+    },
   },
   {
     template: 'PickerField',

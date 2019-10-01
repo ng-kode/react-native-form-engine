@@ -73,10 +73,16 @@ class FormEngine extends React.Component {
       errorText: (errors[path] || [])[0],
     };
 
-    const customize =
-      typeof customizeRaw === 'function'
-        ? customizeRaw(currentState)
-        : customizeRaw;
+    const customize = Object.keys(customizeRaw).reduce((acc, attr) => {
+      const rawValue = customizeRaw[attr];
+      if (rawValue.validation !== undefined) {
+        const evaluatedValue =
+          validate(currentState, rawValue.validation) === undefined;
+        return {...acc, [attr]: evaluatedValue};
+      } else {
+        return {...acc, [attr]: rawValue};
+      }
+    }, {});
 
     return (
       <React.Fragment key={path || customize.title}>
