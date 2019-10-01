@@ -2,6 +2,9 @@ import validate from 'validate.js';
 import lodash from 'lodash';
 
 validate.validators.sumToHundred = (value, options, key, formValue) => {
+  if (value === undefined) {
+    return;
+  }
   const paths = options.composition.filter(path => path !== key).concat(key);
   const sum = paths.reduce((acc, path) => {
     return (acc += lodash.get(formValue, path) || 0);
