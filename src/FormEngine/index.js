@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import produce from 'immer';
 import {View} from 'react-native';
 import lodash from 'lodash';
 import validate from 'validate.js';
