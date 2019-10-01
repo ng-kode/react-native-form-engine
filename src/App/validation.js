@@ -15,7 +15,6 @@ validate.validators.sumToHundred = (value, options, key, attributes) => {
 export default {
   email: {email: {message: '^INVALID_EMAIL'}},
   preferredOS: {exclusion: ['windows']},
-  password: {equality: 'confirmPassword'},
   confirmPassword: {equality: 'password'},
   investA: {sumToHundred: {paths: ['investA', 'investB', 'investC']}},
   investB: {sumToHundred: {paths: ['investA', 'investB', 'investC']}},
