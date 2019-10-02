@@ -22,25 +22,29 @@ class App extends React.Component {
     return (
       <SafeAreaView>
         <ScrollView style={styles.container}>
-          <View style={styles.codeDisplay}>
-            <Text style={styles.title}>Form Value</Text>
-            <Text>{JSON.stringify(value, null, 2)}</Text>
+          <View style={styles.row}>
+            <View style={styles.codeDisplay}>
+              <Text style={styles.title}>Form Value</Text>
+              <Text>{JSON.stringify(value, null, 2)}</Text>
+            </View>
+            <View style={styles.formContainer}>
+              <FormEngine
+                fields={fields}
+                validation={validation}
+                value={value}
+                onChange={this._onChange}>
+                {({isFormValid, isFormDirty}) => (
+                  <View style={styles.submitButtonWrapper}>
+                    <Button
+                      title="Submit"
+                      onPress={this._onPress}
+                      disabled={!isFormValid || !isFormDirty}
+                    />
+                  </View>
+                )}
+              </FormEngine>
+            </View>
           </View>
-          <FormEngine
-            fields={fields}
-            validation={validation}
-            value={value}
-            onChange={this._onChange}>
-            {({isFormValid, isFormDirty}) => (
-              <View style={styles.submitButtonWrapper}>
-                <Button
-                  title="Submit"
-                  onPress={this._onPress}
-                  disabled={!isFormValid || !isFormDirty}
-                />
-              </View>
-            )}
-          </FormEngine>
         </ScrollView>
       </SafeAreaView>
     );
@@ -59,6 +63,10 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
   },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
   title: {
     fontWeight: 'bold',
     marginBottom: 4,
@@ -70,6 +78,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     borderRadius: 4,
     padding: 8,
-    marginVertical: 16,
+    margin: 16,
+    flex: 1,
+  },
+  formContainer: {
+    flex: 3,
+    margin: 16,
   },
 });
