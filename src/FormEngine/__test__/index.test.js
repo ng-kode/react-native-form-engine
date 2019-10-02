@@ -20,7 +20,7 @@ describe('FormEngine', () => {
     const root = TestRenderer.create(
       <FormEngine value={{}} onChange={() => {}} fields={fields} />,
     ).root;
-    expect(root.children.length).toBe(2);
+    expect(root.findAllByProps({testID: 'form-engine-field'}).length).toBe(2);
   });
 
   test('should render funtional children when necessary', () => {
