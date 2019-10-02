@@ -23,7 +23,7 @@ describe('FormEngine', () => {
     expect(root.findAllByProps({testID: 'form-engine-field'}).length).toBe(2);
   });
 
-  test('should render funtional children when necessary', () => {
+  test('should render functional children when necessary', () => {
     const childrenFn = jest.fn();
     TestRenderer.create(
       <FormEngine value={{}} onChange={() => {}} fields={[]}>
@@ -38,18 +38,6 @@ describe('FormEngine', () => {
     );
   });
 
-  test('should render fields with values referenced from `value` props', () => {
-    const fields = [
-      {path: 'username', template: 'TextField'},
-      {path: 'email', template: 'TextField'},
-    ];
-    const value = {username: 'super_123', email: 'thisisme@example.com'};
-    const json = TestRenderer.create(
-      <FormEngine value={value} onChange={() => {}} fields={fields} />,
-    ).toJSON();
-    expect(json).toMatchSnapshot();
-  });
-
   test('should provide each custom field with props `fromEngine` and `customize`', () => {
     const fields = [
       {path: 'username', template: 'TextField'},
@@ -60,6 +48,18 @@ describe('FormEngine', () => {
     ).root.findAllByProps({testID: 'form-engine-field'});
     expect(Fields.every(f => f.props.fromEngine !== undefined)).toBe(true);
     expect(Fields.every(f => f.props.customize !== undefined)).toBe(true);
+  });
+
+  test('should render fields with values referenced from `value` props', () => {
+    const fields = [
+      {path: 'username', template: 'TextField'},
+      {path: 'email', template: 'TextField'},
+    ];
+    const value = {username: 'super_123', email: 'thisisme@example.com'};
+    const json = TestRenderer.create(
+      <FormEngine value={value} onChange={() => {}} fields={fields} />,
+    ).toJSON();
+    expect(json).toMatchSnapshot();
   });
 
   test('should trigger onChange when template props onChange is called', () => {
