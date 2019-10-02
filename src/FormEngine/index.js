@@ -30,6 +30,10 @@ class FormEngine extends React.Component {
     );
   }
 
+  componentDidMount() {
+    this.handleValidate(this.props.value);
+  }
+
   throwInvalidField = field => {
     const {template} = field;
 

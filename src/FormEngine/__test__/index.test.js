@@ -63,4 +63,22 @@ describe('FormEngine', () => {
     expect(onChange).toBeCalledTimes(1);
     expect(onChange).toBeCalledWith({username: 'user123'});
   });
+
+  test('should validate the form componentDidMount', () => {
+    const fields = [
+      {path: 'username', template: 'TextField'},
+      {path: 'myEmail', template: 'TextField'},
+    ];
+    const value = {myEmail: 'this is not an email'};
+    const validation = {myEmail: {email: true}};
+    const instance = TestRenderer.create(
+      <FormEngine
+        value={value}
+        onChange={() => {}}
+        fields={fields}
+        validation={validation}
+      />,
+    ).root.instance;
+    expect(instance.state.errors).toHaveProperty('myEmail');
+  });
 });
