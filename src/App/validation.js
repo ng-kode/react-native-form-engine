@@ -23,6 +23,7 @@ export default {
     exclusion: ['windows'],
   },
   confirmPassword: {
+    presence: true,
     equality: 'password',
   },
   investA: {
