@@ -40,7 +40,7 @@ class FormEngine extends React.Component {
 
   renderField = (field, addSpacing) => {
     this.throwInvalidField(field);
-    const {template, path, customize: customizeRaw} = field;
+    const {template, path, customize: customizeRaw = {}} = field;
     const {value: currentState, templates, verticalSpacing} = this.props;
     const {errors, touched, dirty} = this.state;
     const Component = templates[template];
