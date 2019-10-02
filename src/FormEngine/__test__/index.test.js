@@ -1,4 +1,3 @@
-// import 'react-native';
 import React from 'react';
 import FormEngine from '../index';
 
@@ -23,6 +22,21 @@ describe('FormEngine', () => {
     ).toJSON();
     expect(json.length).toBe(2);
     expect(json).toMatchSnapshot();
+  });
+
+  test('should render funtional children when necessary', () => {
+    const childrenFn = jest.fn();
+    TestRenderer.create(
+      <FormEngine value={{}} onChange={() => {}} fields={[]}>
+        {childrenFn}
+      </FormEngine>,
+    );
+    expect(childrenFn).toHaveBeenCalledWith(
+      expect.objectContaining({
+        isFormDirty: expect.any(Boolean),
+        isFormValid: expect.any(Boolean),
+      }),
+    );
   });
 
   test('should render fields with values referenced from `value` props', () => {
