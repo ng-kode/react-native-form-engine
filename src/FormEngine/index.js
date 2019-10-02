@@ -50,6 +50,7 @@ class FormEngine extends React.Component {
       <React.Fragment key={path || customize.title}>
         <View style={addSpacing && {marginBottom: verticalSpacing}}>
           <Component
+            testID="form-engine-field"
             fromEngine={{
               value: lodash.get(currentState, path),
               onChange: value => this.handleChange(path, value),

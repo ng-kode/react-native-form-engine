@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1570007188745" clover="3.2.0">
+  <project timestamp="1570007188745" name="All files">
+    <metrics statements="54" coveredstatements="45" conditionals="26" coveredconditionals="17" methods="16" coveredmethods="11" elements="96" coveredelements="73" complexity="0" loc="54" ncloc="54" packages="2" files="2" classes="2"/>
+    <package name="FormEngine">
+      <metrics statements="42" coveredstatements="36" conditionals="13" coveredconditionals="10" methods="12" coveredmethods="9"/>
+      <file name="index.js" path="/Users/richard.ng/Projects/rn_form_engine/src/FormEngine/index.js">
+        <metrics statements="42" coveredstatements="36" conditionals="13" coveredconditionals="10" methods="12" coveredmethods="9"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="21" count="7" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
+        <line num="25" count="12" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="34" count="12" type="stmt"/>
+        <line num="36" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="41" count="5" type="stmt"/>
+        <line num="42" count="12" type="stmt"/>
+        <line num="43" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="44" count="12" type="stmt"/>
+        <line num="45" count="12" type="stmt"/>
+        <line num="46" count="12" type="stmt"/>
+        <line num="47" count="12" type="stmt"/>
+        <line num="49" count="12" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="69" count="5" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="75" count="5" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="81" count="2" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="87" count="5" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="94" count="5" type="stmt"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="96" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="100" count="5" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="105" count="1" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="FormEngine.templates">
+      <metrics statements="12" coveredstatements="9" conditionals="13" coveredconditionals="7" methods="4" coveredmethods="2"/>
+      <file name="TextField.js" path="/Users/richard.ng/Projects/rn_form_engine/src/FormEngine/templates/TextField.js">
+        <metrics statements="12" coveredstatements="9" conditionals="13" coveredconditionals="7" methods="4" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="12" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

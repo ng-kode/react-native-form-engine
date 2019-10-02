@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormEngine should render custom fields 1`] = `
+Array [
+  <View
+    style={
+      Object {
+        "marginBottom": 16,
+      }
+    }
+  >
+    <View
+      style={Object {}}
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+            "marginBottom": 4,
+          }
+        }
+      />
+      <TextInput
+        allowFontScaling={true}
+        editable={true}
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "lightgrey",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "padding": 8,
+          }
+        }
+        underlineColorAndroid="transparent"
+      />
+    </View>
+  </View>,
+  <View
+    style={false}
+  >
+    <View
+      style={Object {}}
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+            "marginBottom": 4,
+          }
+        }
+      />
+      <TextInput
+        allowFontScaling={true}
+        editable={true}
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "lightgrey",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "padding": 8,
+          }
+        }
+        underlineColorAndroid="transparent"
+      />
+    </View>
+  </View>,
+]
+`;
+
+exports[`FormEngine should render fields with values referenced from \`value\` props 1`] = `
+Array [
+  <View
+    style={
+      Object {
+        "marginBottom": 16,
+      }
+    }
+  >
+    <View
+      style={Object {}}
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+            "marginBottom": 4,
+          }
+        }
+      />
+      <TextInput
+        allowFontScaling={true}
+        editable={true}
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "lightgrey",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "padding": 8,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value="super_123"
+      />
+    </View>
+  </View>,
+  <View
+    style={false}
+  >
+    <View
+      style={Object {}}
+    >
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+            "marginBottom": 4,
+          }
+        }
+      />
+      <TextInput
+        allowFontScaling={true}
+        editable={true}
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "borderColor": "lightgrey",
+            "borderRadius": 4,
+            "borderWidth": 1,
+            "padding": 8,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value="thisisme@example.com"
+      />
+    </View>
+  </View>,
+]
+`;
