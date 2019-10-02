@@ -1,8 +1,7 @@
 # Features
 
 - Easy to configure templates (for both inputs and ui components)
-- Full control of `value` and `onChange`
-- `errors` and `dirty`/`touched` available
+- inter-field validations
 - Disable / Hide fields by conditions
 
 # Installation
@@ -18,11 +17,11 @@ $ cd .. && react-native run-ios
 - ✅Render custom form controls
 - ✅Render custom ui components
 - ✅Handle `value` and `onChange` through props (i.e. a **controlled** form)
-- ✅Angular-like `touched`
+- ✅Angular-like `touched` / `dirty`
 - ✅Inter-fields validation
-- Array of Objects
 - ✅Show fields by condition
   - ✅remove value when hidden
 - ✅Disable fields by condition
-- ✅retrieve `isFormValid`, `isFormTouched` from `FormEngine`
+- ✅retrieve `isFormValid`, `isFormDirty` from `FormEngine`
+- Array of Objects
 - Auto-generate Doc
