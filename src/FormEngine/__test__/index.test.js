@@ -6,10 +6,10 @@ import TestRenderer from 'react-test-renderer';
 describe('FormEngine', () => {
   test('should render null if fields = []', () => {
     const fields = [];
-    const json = TestRenderer.create(
+    const renderer = TestRenderer.create(
       <FormEngine value={{}} onChange={() => {}} fields={fields} />,
-    ).toJSON();
-    expect(json).toBe(null);
+    );
+    expect(renderer.toJSON()).toBe(null);
   });
 
   test('should render custom fields', () => {
@@ -17,11 +17,10 @@ describe('FormEngine', () => {
       {path: 'username', template: 'TextField'},
       {path: 'email', template: 'TextField'},
     ];
-    const json = TestRenderer.create(
+    const root = TestRenderer.create(
       <FormEngine value={{}} onChange={() => {}} fields={fields} />,
-    ).toJSON();
-    expect(json.length).toBe(2);
-    expect(json).toMatchSnapshot();
+    ).root;
+    expect(root.children.length).toBe(2);
   });
 
   test('should render funtional children when necessary', () => {
