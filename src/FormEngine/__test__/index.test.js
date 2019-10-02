@@ -64,6 +64,28 @@ describe('FormEngine', () => {
     expect(onChange).toBeCalledWith({username: 'user123'});
   });
 
+  test('should trigger onChange with correct `path` and `value`', () => {
+    const fields = [
+      {path: 'username', template: 'TextField'},
+      {path: 'social.facebook', template: 'TextField'},
+      {path: 'social.twitter', template: 'TextField'},
+    ];
+
+    const onChange = jest.fn();
+    const [Username, SocialFb, SocialTwitter] = TestRenderer.create(
+      <FormEngine value={{}} onChange={onChange} fields={fields} />,
+    ).root.findAllByProps({testID: 'form-engine-field'});
+
+    Username.props.fromEngine.onChange('user123');
+    expect(onChange).toBeCalledWith({username: 'user123'});
+
+    SocialFb.props.fromEngine.onChange('me@fb.com');
+    expect(onChange).toBeCalledWith({social: {facebook: 'me@fb.com'}});
+
+    SocialTwitter.props.fromEngine.onChange('@tweetMeHere');
+    expect(onChange).toBeCalledWith({social: {twitter: '@tweetMeHere'}});
+  });
+
   test('should validate the form componentDidMount', () => {
     const fields = [
       {path: 'username', template: 'TextField'},
