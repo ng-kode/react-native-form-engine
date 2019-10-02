@@ -16,7 +16,7 @@ $ cd .. && react-native run-ios
 # TODOs
 
 - ✅Render custom form controls
-- Render custom ui components
+- ✅Render custom ui components
 - ✅Handle `value` and `onChange` through props (i.e. a **controlled** form)
 - ✅Angular-like `touched`
 - ✅Inter-fields validation
