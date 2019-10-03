@@ -8,8 +8,8 @@ import {
   ScrollView,
 } from 'react-native';
 import FormEngine from '../FormEngine';
-import fields from './fields';
-import validation from './validation';
+import fields from './fields.json';
+import validation from './validation.json';
 
 class App extends React.Component {
   state = {

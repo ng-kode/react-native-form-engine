@@ -1,0 +1,8 @@
+{
+  "numFamilyMembers": {
+    "numericality": {
+      "onlyInteger": true,
+      "greaterThanOrEqualTo": 0
+    }
+  }
+}

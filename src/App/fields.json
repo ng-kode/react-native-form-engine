@@ -1,0 +1,40 @@
+[
+  {
+    "template": "Text",
+    "customize": {
+      "title": "客戶資料",
+      "type": "h1"
+    }
+  },
+  {
+    "path": "hasAmericanPassport",
+    "template": "RadioField",
+    "customize": {
+      "label": "閣下是否持有美國護照或於美國居住?",
+      "options": [
+        {"label": "是", "value": true},
+        {"label": "否", "value": false}
+      ]
+    }
+  },
+  {
+    "path": "numFamilyMembers",
+    "template": "TextField",
+    "customize": {
+      "label": "眷屬數目"
+    }
+  },
+  {
+    "path": "educationLevel",
+    "template": "RadioField",
+    "customize": {
+      "label": "教育程度",
+      "options": [
+        {"label": "小學或以下", "value": 1001},
+        {"label": "中學", "value": 1002},
+        {"label": "大專/大學或以上", "value": 1003},
+        {"label": "其他(請列明)", "value": 1004}
+      ]
+    }
+  }
+]
