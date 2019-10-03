@@ -4,5 +4,11 @@
       "onlyInteger": true,
       "greaterThanOrEqualTo": 0
     }
+  },
+  "sourceOfInsuranceKnowledge": {
+    "length": {
+      "minimum": 1,
+      "tooShort": "^Please choose at least 1 option"
+    }
   }
 }

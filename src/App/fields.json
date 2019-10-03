@@ -33,7 +33,33 @@
         {"label": "小學或以下", "value": 1001},
         {"label": "中學", "value": 1002},
         {"label": "大專/大學或以上", "value": 1003},
-        {"label": "其他(請列明)", "value": 1004}
+        {"label": "其他", "value": 1004}
+      ]
+    }
+  },
+  {
+    "path": "hasInsuranceExp",
+    "template": "SwitchField",
+    "customize": {
+      "label": "保險知識與經驗?"
+    }
+  },
+  {
+    "path": "sourceOfInsuranceKnowledge",
+    "template": "MultipleCheckboxes",
+    "showOnlyWhen": {
+      "hasInsuranceExp": {
+        "presence": true,
+        "inclusion": [true]
+      }
+    },
+    "customize": {
+      "label": "閣下的保險知識和資訊是從 (可選一項或以上):",
+      "options": [
+        {"label": "曾聽取保險顧問之說明", "value": 1001},
+        {"label": "現在或曾經持有保單", "value": 1002},
+        {"label": "保險專業培訓", "value": 1003},
+        {"label": "其他(例如新聞 / 研討會/ 個人資料搜集)", "value": 1004}
       ]
     }
   }
