@@ -32,6 +32,7 @@ const TextField = ({fromEngine, customize}) => {
 const makeStyles = ({showError, isFocusing, editable}) =>
   StyleSheet.create({
     container: {
+      width: 240,
       ...(!editable && {opacity: 0.5}),
     },
     label: {marginBottom: 4, fontWeight: 'bold'},
