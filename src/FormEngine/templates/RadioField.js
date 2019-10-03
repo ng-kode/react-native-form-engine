@@ -2,28 +2,30 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Label from './__Label';
 
-const RadioButtonStyles = StyleSheet.create({
-  roundBorder: {
-    height: 24,
-    width: 24,
-    borderRadius: 12,
-    borderWidth: 2,
-    borderColor: '#007bff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  fill: {
-    height: 12,
-    width: 12,
-    borderRadius: 6,
-    backgroundColor: '#007bff',
-  },
-});
+const makeRadioButtonStyles = selected =>
+  StyleSheet.create({
+    roundBorder: {
+      height: 24,
+      width: 24,
+      borderRadius: 12,
+      borderWidth: 2,
+      ...(selected && {borderColor: '#007bff'}),
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    fill: {
+      height: 12,
+      width: 12,
+      borderRadius: 6,
+      backgroundColor: '#007bff',
+    },
+  });
 
 const RadioButton = ({selected, style}) => {
+  const styles = makeRadioButtonStyles(selected);
   return (
-    <View style={[RadioButtonStyles.roundBorder, style]}>
-      {selected ? <View style={RadioButtonStyles.fill} /> : null}
+    <View style={[styles.roundBorder, style]}>
+      {selected ? <View style={styles.fill} /> : null}
     </View>
   );
 };
