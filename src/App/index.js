@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   Text,
   ScrollView,
+  Dimensions,
 } from 'react-native';
 import FormEngine from '../FormEngine';
 import fields from './fields.json';
@@ -25,7 +26,7 @@ class App extends React.Component {
           <View style={styles.row}>
             <View style={styles.codeDisplay}>
               <Text style={styles.title}>Form Value</Text>
-              <Text>{JSON.stringify(value, null, 2)}</Text>
+              <Text style={styles.code}>{JSON.stringify(value, null, 2)}</Text>
             </View>
             <View style={styles.formContainer}>
               <FormEngine
@@ -70,11 +71,16 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     marginBottom: 4,
+    fontSize: 16,
+  },
+  code: {
+    fontSize: 18,
   },
   submitButtonWrapper: {
     marginVertical: 16,
   },
   codeDisplay: {
+    height: Dimensions.get('screen').height * 0.9,
     backgroundColor: 'lightgrey',
     borderRadius: 4,
     padding: 8,
