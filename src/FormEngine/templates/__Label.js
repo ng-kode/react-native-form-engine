@@ -6,7 +6,7 @@ const Label = ({title, style}) => (
 );
 
 const styles = StyleSheet.create({
-  title: {marginBottom: 4, fontWeight: 'bold'},
+  title: {marginBottom: 4, fontWeight: 'bold', fontSize: 16},
 });
 
 export default Label;
