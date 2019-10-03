@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
+import Label from './__Label';
 
 const TextField = ({fromEngine, customize}) => {
   const {touched, errorText, onChange, onBlur, ...rest} = fromEngine;
@@ -11,7 +12,7 @@ const TextField = ({fromEngine, customize}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{label}</Text>
+      <Label title={label} />
       <TextInput
         style={styles.textInput}
         onChangeText={onChange}
@@ -35,7 +36,6 @@ const makeStyles = ({showError, isFocusing, editable}) =>
       width: 240,
       ...(!editable && {opacity: 0.5}),
     },
-    label: {marginBottom: 4, fontWeight: 'bold'},
     textInput: {
       borderWidth: 1,
       borderColor: isFocusing ? '#007bff' : 'lightgrey',

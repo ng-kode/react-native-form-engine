@@ -1,5 +1,6 @@
 import React from 'react';
 import {Picker, View, Text, StyleSheet} from 'react-native';
+import Label from './__Label';
 
 const PickerField = ({fromEngine, customize}) => {
   const {errorText, value: selectedValue, onChange, dirty} = fromEngine;
@@ -9,7 +10,7 @@ const PickerField = ({fromEngine, customize}) => {
 
   return (
     <View>
-      <Text style={styles.label}>{label}</Text>
+      <Label title={label} />
       <Picker
         style={styles.picker}
         selectedValue={selectedValue}
@@ -25,7 +26,6 @@ const PickerField = ({fromEngine, customize}) => {
 
 const makeStyles = showError =>
   StyleSheet.create({
-    label: {marginBottom: 4, fontWeight: 'bold'},
     picker: {
       borderWidth: 1,
       borderColor: 'lightgrey',

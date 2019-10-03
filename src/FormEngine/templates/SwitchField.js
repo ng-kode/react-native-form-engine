@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, Switch, StyleSheet} from 'react-native';
+import Label from './__Label';
 
 const SwitchField = ({fromEngine, customize}) => {
   const {value, onChange, errorText, dirty} = fromEngine;
@@ -9,7 +10,7 @@ const SwitchField = ({fromEngine, customize}) => {
 
   return (
     <View>
-      <Text style={styles.label}>{label}</Text>
+      <Label title={label} style={{...(showError && {color: 'red'})}} />
       <Switch value={value} onValueChange={onChange} />
       {showError && <Text style={styles.errorText}>{errorText}</Text>}
     </View>
@@ -18,7 +19,6 @@ const SwitchField = ({fromEngine, customize}) => {
 
 const makeStyles = showError =>
   StyleSheet.create({
-    label: {fontWeight: 'bold', ...(showError && {color: 'red'})},
     errorText: {color: 'red'},
   });
 
