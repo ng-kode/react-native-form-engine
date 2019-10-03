@@ -14,7 +14,7 @@ const MultipleCheckboxes = ({
       {!!errorText && <Text style={styles.errorText}>{errorText}</Text>}
       <View style={styles.checkboxesContainer}>
         {options.map(({label, value}) => (
-          <View style={styles.checkboxContainer}>
+          <View style={styles.checkboxContainer} key={value}>
             <CheckBox
               title={label}
               checked={currentValues.includes(value)}
