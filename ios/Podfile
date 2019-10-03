@@ -36,6 +36,8 @@ target 'rn_form_engine' do
 
   pod 'react-native-slider', :path => '../node_modules/@react-native-community/slider'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'rn_form_engineTests' do
     inherit! :search_paths
     # Pods for testing
