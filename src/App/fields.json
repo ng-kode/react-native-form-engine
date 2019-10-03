@@ -55,6 +55,7 @@
     },
     "customize": {
       "label": "閣下的保險知識和資訊是從 (可選一項或以上):",
+      "hasBorder": true,
       "options": [
         {"label": "曾聽取保險顧問之說明", "value": 1001},
         {"label": "現在或曾經持有保單", "value": 1002},

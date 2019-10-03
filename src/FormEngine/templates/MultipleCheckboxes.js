@@ -5,11 +5,11 @@ import Label from './__Label';
 
 const MultipleCheckboxes = ({
   fromEngine: {value: currentValues = [], onChange, errorText},
-  customize: {label: title, options, twoColumns = false},
+  customize: {label: title, options, twoColumns = false, hasBorder = false},
 }) => {
   const styles = makeStyles(twoColumns);
   return (
-    <View>
+    <View style={hasBorder && styles.container}>
       <Label title={title} />
       {!!errorText && <Text style={styles.errorText}>{errorText}</Text>}
       <View style={styles.checkboxesContainer}>
@@ -35,6 +35,12 @@ const MultipleCheckboxes = ({
 
 const makeStyles = twoColumns =>
   StyleSheet.create({
+    container: {
+      borderWidth: 1,
+      padding: 16,
+      borderColor: 'lightgrey',
+      borderRadius: 4,
+    },
     errorText: {
       color: 'red',
       marginBottom: 8,
