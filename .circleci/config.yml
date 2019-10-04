@@ -25,13 +25,6 @@ jobs:
           paths:
             - node_modules
 
-  test:
-    working_directory: ~/rn_form_engine
-      docker:
-        - image: circleci/node:12.10.0
-    steps:
-      - checkout
-      
       - run:
           name: jest tests
           command: |
@@ -50,12 +43,3 @@ jobs:
 
       - store_artifacts:
           path: test-results
-
-workflows:
-  version: 2
-  build_test:
-    jobs:
-      - build
-      - test:
-        requires:
-          - build
