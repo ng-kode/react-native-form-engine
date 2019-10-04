@@ -45,36 +45,6 @@ export default [
     },
   },
   {
-    path: 'investA',
-    template: 'SliderField',
-    customize: {
-      label: 'Investment A (%)',
-      minimumValue: 0,
-      maximumValue: 100,
-      step: 1,
-    },
-  },
-  {
-    path: 'investB',
-    template: 'SliderField',
-    customize: {
-      label: 'Investment B (%)',
-      minimumValue: 0,
-      maximumValue: 100,
-      step: 1,
-    },
-  },
-  {
-    path: 'investC',
-    template: 'SliderField',
-    customize: {
-      label: 'Investment C (%)',
-      minimumValue: 0,
-      maximumValue: 100,
-      step: 1,
-    },
-  },
-  {
     path: 'shouldEmailMe',
     template: 'SwitchField',
     customize: {

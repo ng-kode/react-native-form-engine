@@ -34,8 +34,6 @@ target 'rn_form_engine' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'react-native-slider', :path => '../node_modules/@react-native-community/slider'
-
   target 'rn_form_engineTests' do
     inherit! :search_paths
     # Pods for testing
