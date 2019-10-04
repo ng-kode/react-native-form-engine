@@ -1,6 +1,12 @@
+# React Native Form Engine
+
+[![CircleCI](https://circleci.com/gh/ng-kode/react-native-form-engine/tree/master.svg?style=shield)](https://circleci.com/gh/ng-kode/react-native-form-engine/tree/master)
+
+JSON-powered form generator
+
 # Features
 
-- Easy to configure templates (for both inputs and ui components)
+- Add customized templates with ease (for both inputs and ui components)
 - inter-field validations
 - Disable / Hide fields by conditions
 
