@@ -146,10 +146,10 @@ workflows:
   version: 2
   node-ios:
     jobs:
-      - node
-      - ios:
-          requires:
-            - node
+      # - node
+      - ios
+        # requires:
+        #   - node
   # node-android-ios:
   #   jobs:
   #     - node
