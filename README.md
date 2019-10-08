@@ -1,5 +1,6 @@
 # React Native Form Engine
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![CircleCI](https://circleci.com/gh/ng-kode/react-native-form-engine/tree/master.svg?style=shield)](https://circleci.com/gh/ng-kode/react-native-form-engine/tree/master)
 
 JSON-powered form generator
