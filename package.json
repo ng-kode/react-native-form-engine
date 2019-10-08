@@ -37,8 +37,8 @@
     "form-validation",
     "json-form"
   ],
-  "author": "Richard Ng",
-  "license": "ISC",
+  "author": "Richard Ng <richard.ng.cccc@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ng-kode/react-native-form-engine/issues"
   },
