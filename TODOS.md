@@ -4,7 +4,7 @@
 - :white_check_mark: Angular-like `touched` / `dirty`
 - :white_check_mark: Inter-fields validation
 - :white_check_mark: Show fields by condition
-- :white_check_mark: remove value when hidden
+  - :white_check_mark: remove value when hidden
 - :white_check_mark: Disable fields by condition
 - :white_check_mark: retrieve `isFormValid`, `isFormDirty` from `FormEngine`
 - Array of Objects
