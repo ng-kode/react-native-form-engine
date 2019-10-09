@@ -12,24 +12,59 @@ JSON-powered form generator
 - inter-field validations
 - Disable / Hide fields by conditions
 
-# Installation
+# How to use
 
-```
-$ yarn install
-$ cd ios && pod install
-$ cd .. && react-native run-ios
-```
+1. Install through npm / yarn
 
-# TODOs
+   ```
+   $ cd <your-project-root>
+   $ yarn install react-native-form-engine
+   ```
 
-- ✅Render custom form controls
-- ✅Render custom ui components
-- ✅Handle `value` and `onChange` through props (i.e. a **controlled** form)
-- ✅Angular-like `touched` / `dirty`
-- ✅Inter-fields validation
-- ✅Show fields by condition
-  - ✅remove value when hidden
-- ✅Disable fields by condition
-- ✅retrieve `isFormValid`, `isFormDirty` from `FormEngine`
-- Array of Objects
-- Auto-generate Doc
+2. Define your fields
+   ```
+   const fields = [
+       {
+           "template": "Text",
+           "customize": {
+             "title": "客戶資料",
+             "type": "h1"
+           }
+       },
+       {
+           "path": "userEmail",
+           "template": "TextField",
+           "customize": {
+             "label": "你的電郵"
+           }
+       },
+       // ...etc
+   ]
+   ```
+3. Render `FormEngine`, pass in `fields`, together with `value` and a `onChange` handler
+
+   ```
+   class MyComponent extends React.Component {
+       state = {
+           value: {}
+       }
+
+       render() {
+           <FormEngine
+               fields={fields}
+               value={this.state.value}
+               onChange={value => this.setState({ value })}
+           />
+       }
+   }
+   ```
+
+   The fields will be rendered with their corresponding value (find by "path").
+
+4. When user interacts with the form, `onChange` handler will be called with
+   ```
+   {
+       userEmail: 'user123@example.com'
+   }
+   ```
+   Then `MyComponent` will be responsible for updating `this.state.value`, thereby triggering the `render` method again and specific fields will be re-rendered (React's one-way binding).
