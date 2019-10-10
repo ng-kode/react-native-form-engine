@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView, AppRegistry} from 'react-native';
+import {ScrollView, AppRegistry} from 'react-native';
 import FormEngine from './lib';
 
 const fields = [
@@ -19,8 +19,21 @@ const fields = [
     },
   },
   {
+    path: 'shouldNotifyByEmail',
+    template: 'SwitchField',
+    customize: {
+      label: 'Receive notification ?',
+    },
+  },
+  {
     path: 'userEmail',
     template: 'TextField',
+    showOnlyWhen: {
+      shouldNotifyByEmail: {
+        presence: true,
+        inclusion: [true],
+      },
+    },
     customize: {
       label: 'Email',
     },
