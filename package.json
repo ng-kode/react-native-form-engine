@@ -4,6 +4,7 @@
   "description": "A JSON-powered form generator",
   "main": "lib/index.js",
   "scripts": {
+    "start:dev": "react-native start",
     "test": "jest"
   },
   "peerDependencies": {
