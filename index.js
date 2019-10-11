@@ -70,7 +70,7 @@ class App extends Component {
         <FormEngine
           fields={fields}
           onChange={formValue => this.setState({formValue})}
-          value={this.state.formValue}
+          formValue={this.state.formValue}
         />
       </ScrollView>
     );
