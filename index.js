@@ -32,9 +32,7 @@ const fields = [
     customize: {
       label: 'Email',
     },
-    validation: {
-      email: true,
-    },
+    validation: {email: true},
   },
   {
     path: 'investPercent',
@@ -42,7 +40,7 @@ const fields = [
     customize: {
       label: 'Investment Percentage',
     },
-    validation: () => {},
+    validation: {numericality: true},
   },
   {
     path: 'reasonOver100',
@@ -56,6 +54,45 @@ const fields = [
         numericality: {
           greaterThan: 100,
         },
+      },
+    },
+  },
+  {
+    path: 'activity1',
+    template: 'TextField',
+    customize: {
+      label: 'Eat',
+    },
+    validation: {
+      numericality: true,
+      spendAtLeastOne: {
+        composition: ['activity1', 'activity2', 'activity3'],
+      },
+    },
+  },
+  {
+    path: 'activity2',
+    template: 'TextField',
+    customize: {
+      label: 'Walk',
+    },
+    validation: {
+      numericality: true,
+      spendAtLeastOne: {
+        composition: ['activity1', 'activity2', 'activity3'],
+      },
+    },
+  },
+  {
+    path: 'activity3',
+    template: 'TextField',
+    customize: {
+      label: 'Sleep',
+    },
+    validation: {
+      numericality: true,
+      spendAtLeastOne: {
+        composition: ['activity1', 'activity2', 'activity3'],
       },
     },
   },
