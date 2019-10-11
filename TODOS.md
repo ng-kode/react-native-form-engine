@@ -7,6 +7,7 @@
   - :white_check_mark: remove value when hidden
 - :white_check_mark: Disable fields by condition
 - :white_check_mark: retrieve `isFormValid`, `isFormDirty` from `FormEngine`
-- Array of Objects
-- Documentation
 - :white_check_mark: injectable validatejs
+- dynamic `customise` based on `formValue` / `fieldValue`
+- Documentation
+- Array of Objects
