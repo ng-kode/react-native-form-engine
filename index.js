@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {ScrollView, AppRegistry} from 'react-native';
 import FormEngine from './lib';
+import validatejs from 'validate.js';
+import lodash from 'lodash';
 
 const fields = [
   {
@@ -98,6 +100,19 @@ const fields = [
   },
 ];
 
+validatejs.validators.spendAtLeastOne = (
+  fieldValue,
+  options,
+  key,
+  formValue,
+) => {
+  const {composition} = options;
+  const values = composition.map(path => lodash.get(formValue, path) || 0);
+  return values.reduce((acc, val) => acc + val, 0) > 0
+    ? undefined
+    : '^Spend time in at least one of them';
+};
+
 class App extends Component {
   state = {formValue: {}};
 
@@ -108,6 +123,7 @@ class App extends Component {
           fields={fields}
           onChange={formValue => this.setState({formValue})}
           formValue={this.state.formValue}
+          validatejs={validatejs}
         />
       </ScrollView>
     );

@@ -9,3 +9,4 @@
 - :white_check_mark: retrieve `isFormValid`, `isFormDirty` from `FormEngine`
 - Array of Objects
 - Documentation
+- :white_check_mark: injectable validatejs
