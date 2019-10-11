@@ -28,15 +28,29 @@ const fields = [
   {
     path: 'userEmail',
     template: 'TextField',
-    showOnlyWhen: {
-      shouldNotifyByEmail: {
-        presence: true,
-        inclusion: [true],
-      },
-    },
+    showOnlyWhen: formValue => formValue['shouldNotifyByEmail'] === true,
     customize: {
       label: 'Email',
     },
+    validation: {
+      email: true,
+    },
+  },
+  {
+    path: 'investPercent',
+    template: 'TextField',
+    customize: {
+      label: 'Investment Percentage',
+    },
+    validation: () => {},
+  },
+  {
+    path: 'reasonOver100',
+    template: 'TextField',
+    customize: {
+      label: 'Please specify reason for > 100',
+    },
+    showOnlyWhen: formValue => formValue['investPercent'] > 100,
   },
 ];
 
