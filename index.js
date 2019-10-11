@@ -40,12 +40,6 @@ const fields = [
   },
 ];
 
-const validation = {
-  userEmail: {
-    email: true,
-  },
-};
-
 class App extends Component {
   state = {formValue: {}};
 
@@ -56,7 +50,6 @@ class App extends Component {
           fields={fields}
           onChange={formValue => this.setState({formValue})}
           value={this.state.formValue}
-          validation={validation}
         />
       </ScrollView>
     );
