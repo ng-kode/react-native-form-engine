@@ -50,7 +50,14 @@ const fields = [
     customize: {
       label: 'Please specify reason for > 100',
     },
-    showOnlyWhen: formValue => formValue['investPercent'] > 100,
+    showOnlyWhen: {
+      investPercent: {
+        presence: true,
+        numericality: {
+          greaterThan: 100,
+        },
+      },
+    },
   },
 ];
 
