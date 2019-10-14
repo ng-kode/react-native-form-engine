@@ -1,11 +1,12 @@
 import React from 'react';
-import {SafeAreaView, View, Button} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import FormEngine from 'react-native-form-engine';
 
 const fields = [
   {
+    path: 'header',
     template: 'Text',
-    customize: {
+    templateProps: {
       title: 'Hello, World',
       type: 'h1',
     },
@@ -13,7 +14,7 @@ const fields = [
   {
     path: 'username',
     template: 'TextField',
-    customize: {
+    templateProps: {
       label: 'username',
     },
   },
@@ -25,13 +26,7 @@ const App = () => {
   return (
     <SafeAreaView>
       <View style={{marginHorizontal: 16}}>
-        <FormEngine fields={fields} value={value} onChange={setValue}>
-          {({isFormDirty, isFormValid}) => (
-            <View style={{margin: 16}}>
-              <Button title="Send" disabled={!isFormDirty || !isFormValid} />
-            </View>
-          )}
-        </FormEngine>
+        <FormEngine fields={fields} formValue={value} onChange={setValue} />
       </View>
     </SafeAreaView>
   );

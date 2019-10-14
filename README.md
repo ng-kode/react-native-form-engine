@@ -26,7 +26,7 @@ JSON-powered form generator
    const fields = [
        {
            "template": "Text",
-           "customize": {
+           "templateProps": {
              "title": "客戶資料",
              "type": "h1"
            }
@@ -34,14 +34,14 @@ JSON-powered form generator
        {
            "path": "userEmail",
            "template": "TextField",
-           "customize": {
+           "templateProps": {
              "label": "你的電郵"
            }
        },
        // ...etc
    ]
    ```
-3. Render `FormEngine`, pass in `fields`, together with `value` and a `onChange` handler
+3. Render `FormEngine`, pass in `fields`, together with `formValue` and a `onChange` handler
 
    ```
    class MyComponent extends React.Component {
@@ -52,7 +52,7 @@ JSON-powered form generator
        render() {
            <FormEngine
                fields={fields}
-               value={this.state.value}
+               formValue={this.state.value}
                onChange={value => this.setState({ value })}
            />
        }

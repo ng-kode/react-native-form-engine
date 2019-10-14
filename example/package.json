@@ -13,7 +13,7 @@
   "dependencies": {
     "react": "16.9.0",
     "react-native": "0.61.2",
-    "react-native-form-engine": "../react-native-form-engine-1.0.0.tgz"
+    "react-native-form-engine": "../react-native-form-engine-2.0.0.tgz"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
