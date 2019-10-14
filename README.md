@@ -26,6 +26,7 @@ JSON-powered form generator
    ```
    const fields = [
        {
+           "path": "profileHeader",
            "template": "Text",
            "templateProps": {
              "title": "Your Profile",
