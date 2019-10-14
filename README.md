@@ -21,13 +21,14 @@ JSON-powered form generator
    $ yarn install react-native-form-engine
    ```
 
-2. Define your fields
+2. Define your own fields and templates
+
    ```
    const fields = [
        {
            "template": "Text",
            "templateProps": {
-             "title": "客戶資料",
+             "title": "Your Profile",
              "type": "h1"
            }
        },
@@ -35,31 +36,49 @@ JSON-powered form generator
            "path": "userEmail",
            "template": "TextField",
            "templateProps": {
-             "label": "你的電郵"
+             "label": "Your Email"
            }
        },
        // ...etc
    ]
-   ```
-3. Render `FormEngine`, pass in `fields`, together with `formValue` and a `onChange` handler
 
-   ```
-   class MyComponent extends React.Component {
-       state = {
-           value: {}
-       }
-
-       render() {
-           <FormEngine
-               fields={fields}
-               formValue={this.state.value}
-               onChange={value => this.setState({ value })}
-           />
-       }
-   }
+   const templates = {
+        Text: ({title, type}) => (
+            <Text style={[type === 'h1' && {fontSize: 24}]}>{title}</Text>
+        ),
+        TextField: ({label, value, onChange}) => (
+            <View style={{marginBottom: 16}}>
+                <Text style={{fontWeight: 'bold'}}>{label}</Text>
+                <TextInput value={value} onCh={onChange} />
+            </View>
+        ),
+   };
    ```
 
-   The fields will be rendered with their corresponding value (find by "path").
+3. Render `FormEngine`, pass in the following
+   - `fields` array
+   - `formValue` object
+   - `onChange` handler
+   - `templates` (optional, fallback to default templates if not provided)
+
+```
+class MyComponent extends React.Component {
+    state = {
+        value: {}
+    }
+
+    render() {
+        <FormEngine
+            fields={fields}
+            formValue={this.state.value}
+            onChange={value => this.setState({ value })}
+            templates={templates}
+        />
+    }
+}
+```
+
+The fields will be rendered with their corresponding value (find by "path").
 
 4. When user interacts with the form, `onChange` handler will be called with
    ```
