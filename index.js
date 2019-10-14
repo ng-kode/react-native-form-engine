@@ -8,7 +8,7 @@ const fields = [
   {
     path: 'header',
     template: 'Text',
-    customize: {
+    templateProps: {
       type: 'h1',
       title: 'Hello, World',
     },
@@ -16,14 +16,14 @@ const fields = [
   {
     path: 'username',
     template: 'TextField',
-    customize: {
+    templateProps: {
       label: 'Username',
     },
   },
   {
     path: 'shouldNotifyByEmail',
     template: 'SwitchField',
-    customize: {
+    templateProps: {
       label: 'Receive notification ?',
     },
   },
@@ -31,7 +31,7 @@ const fields = [
     path: 'userEmail',
     template: 'TextField',
     showOnlyWhen: formValue => formValue['shouldNotifyByEmail'] === true,
-    customize: {
+    templateProps: {
       label: 'Email',
     },
     validation: {email: true},
@@ -39,7 +39,7 @@ const fields = [
   {
     path: 'investPercent',
     template: 'TextField',
-    customize: {
+    templateProps: {
       label: 'Investment Percentage',
     },
     validation: {numericality: true},
@@ -47,7 +47,7 @@ const fields = [
   {
     path: 'reasonOver100',
     template: 'TextField',
-    customize: {
+    templateProps: {
       label: 'Please specify reason for > 100',
     },
     showOnlyWhen: {
@@ -62,7 +62,7 @@ const fields = [
   {
     path: 'activity1',
     template: 'TextField',
-    customize: {
+    templateProps: {
       label: 'Eat',
     },
     validation: {
@@ -75,7 +75,7 @@ const fields = [
   {
     path: 'activity2',
     template: 'TextField',
-    customize: {
+    templateProps: {
       label: 'Walk',
     },
     validation: {
@@ -88,7 +88,7 @@ const fields = [
   {
     path: 'activity3',
     template: 'TextField',
-    customize: {
+    templateProps: {
       label: 'Sleep',
     },
     validation: {

@@ -22,7 +22,6 @@ Array [
       />
       <TextInput
         allowFontScaling={true}
-        dirty={false}
         editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
@@ -57,7 +56,6 @@ Array [
       />
       <TextInput
         allowFontScaling={true}
-        dirty={false}
         editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
