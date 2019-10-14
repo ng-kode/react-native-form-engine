@@ -56,29 +56,30 @@ JSON-powered form generator
    ```
 
 3. Render `FormEngine`, pass in the following
+
    - `fields` array
    - `formValue` object
    - `onChange` handler
    - `templates` (optional, fallback to default templates if not provided)
 
-```
-class MyComponent extends React.Component {
-    state = {
-        value: {}
-    }
+   ```
+   class MyComponent extends React.Component {
+       state = {
+           value: {}
+       }
 
-    render() {
-        <FormEngine
-            fields={fields}
-            formValue={this.state.value}
-            onChange={value => this.setState({ value })}
-            templates={templates}
-        />
-    }
-}
-```
+       render() {
+           <FormEngine
+               fields={fields}
+               formValue={this.state.value}
+               onChange={value => this.setState({ value })}
+               templates={templates}
+           />
+       }
+   }
+   ```
 
-The fields will be rendered with their corresponding value (find by "path").
+   The fields will be rendered with their corresponding value (find by "path").
 
 4. When user interacts with the form, `onChange` handler will be called with
    ```
