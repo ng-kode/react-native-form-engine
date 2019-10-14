@@ -6,6 +6,8 @@
 
 JSON-powered form generator
 
+![demo.gif](demo.gif)
+
 # Features
 
 - Add customized templates with ease (for both inputs and ui components)
